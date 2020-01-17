@@ -15,6 +15,7 @@ extension ARAudience: AgoraRtcEngineDelegate {
             if self.showLogs {
                print("firstRemoteVideoStarting for Uid: \(uid)")
             }
+            print("remote-user: \(String(describing: self.remoteUser))")
             if self.remoteUser == uid {
                 guard let remoteView = self.remoteVideoView else { return }
                 let videoCanvas = AgoraRtcVideoCanvas()
@@ -54,10 +55,11 @@ extension ARAudience: AgoraRtcEngineDelegate {
         }
         // TODO: Extend to support more than a single broadcaster
         if self.remoteUser == nil {
-           self.remoteUser = uid // keep track of the remote user
-           if self.debug {
-               print("remote host added")
-           }
+            agoraKit.enableVideo()
+            self.remoteUser = uid // keep track of the remote user
+            if self.debug {
+                print("remote host added")
+            }
         }
     }
        
