@@ -26,7 +26,7 @@ open class ARBroadcaster: UIViewController {
     // Agora
     var agoraKit: AgoraRtcEngineKit!                    // Agora.io Video Engine reference
     var arVideoSource: ARVideoSource = ARVideoSource()  // for passing the AR camera as the stream
-    var channelProfile: AgoraChannelProfile = .communication
+    var channelProfile: AgoraChannelProfile = .liveBroadcasting
     var frameRate: AgoraVideoFrameRate = .fps60
     var videoDimension: CGSize = AgoraVideoDimension640x360
     var videoBitRate: Int = AgoraVideoBitrateStandard
@@ -107,7 +107,7 @@ open class ARBroadcaster: UIViewController {
         arvkRenderer.rest()
         // Cleanup the session as the view is removed from heirarchy
         self.sceneView.session.pause()
-        self.sceneView.removeFromSuperview()
+//        self.sceneView.removeFromSuperview()
     }
     
     override open func viewDidLoad() {
