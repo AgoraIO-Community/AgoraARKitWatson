@@ -16,7 +16,8 @@ class ViewController: AgoraLobbyVC  {
         super.loadView()
         
         AgoraARKit.agoraAppId = "66b9d68bd5a14be9b8d35c05fd34f88d"
-        self.arBroadcastVC = arCoremlBroadcaster()
+//        self.arBroadcastVC = arCoremlBroadcaster()
+        self.arBroadcastVC = arWatsonBroadcaster()
         
         // set the banner image within the initial view
         if let agoraLogo = UIImage(named: "ar-support-icon") {

@@ -21,7 +21,7 @@ class arCoremlBroadcaster: ARBroadcaster {
     let dispatchQueueML = DispatchQueue(label: "io.agora.dispatchqueue.ml") // A Serial Queue
     
     override func viewDidLoad() {
- 
+        super.viewDidLoad()
         // Set up Vision Model - This can be replaced with other models on
         guard let selectedModel = try? VNCoreMLModel(for: mlModel) else {  // https://developer.apple.com/machine-learning/
             fatalError("Could not load model. Models available from https://developer.apple.com/machine-learning . Ensure Coreml model is in your XCode Project and part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")

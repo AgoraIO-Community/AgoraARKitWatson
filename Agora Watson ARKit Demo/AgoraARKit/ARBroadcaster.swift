@@ -61,7 +61,7 @@ open class ARBroadcaster: UIViewController {
     
     
     // Debugging
-    internal let debug: Bool = true                             // toggle the debug logs
+    internal let debug: Bool = false                             // toggle the debug logs
     var showLogs: Bool = true
     
     // MARK: VC Events
@@ -103,11 +103,8 @@ open class ARBroadcaster: UIViewController {
     
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // stop the ARVideoKit renderer
-        arvkRenderer.rest()
         // Cleanup the session as the view is removed from heirarchy
         self.sceneView.session.pause()
-//        self.sceneView.removeFromSuperview()
     }
     
     override open func viewDidLoad() {
@@ -148,6 +145,10 @@ open class ARBroadcaster: UIViewController {
         if AgoraARKit.agoraAppId == nil {
             popView()
         }
+    }
+    
+    override open func viewDidDisappear(_ animated: Bool) {
+        
     }
     
     // MARK: Hide status bar
