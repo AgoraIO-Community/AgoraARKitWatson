@@ -13,8 +13,8 @@ open class AgoraLobbyVC: UIViewController  {
     var debug : Bool = false
     
     // VCs
-    let arBroadcastVC = ARBroadcaster()
-    let arAudienceVC = ARAudience()
+    var arBroadcastVC = ARBroadcaster()
+    var arAudienceVC = ARAudience()
     
     // UI properties
     var banner: UIImageView?
