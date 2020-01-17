@@ -14,7 +14,7 @@ open class ARAudience: UIViewController {
     // Agora
     var agoraKit: AgoraRtcEngineKit!                    // Agora.io Video Engine reference
     var arVideoSource: ARVideoSource = ARVideoSource()  // for passing the AR camera as the stream
-    var channelProfile: AgoraChannelProfile = .communication
+    var channelProfile: AgoraChannelProfile = .liveBroadcasting
     var defaultToSpeakerPhone: Bool = true
     var channelName: String!
     
