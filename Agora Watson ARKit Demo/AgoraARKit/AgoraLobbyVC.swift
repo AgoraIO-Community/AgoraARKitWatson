@@ -13,8 +13,8 @@ open class AgoraLobbyVC: UIViewController  {
     var debug : Bool = false
     
     // VCs
-    var arBroadcastVC = ARBroadcaster()
-    var arAudienceVC = ARAudience()
+    var arBroadcastVC: ARBroadcaster!
+    var arAudienceVC: ARAudience!
     
     // UI properties
     var banner: UIImageView?
@@ -39,18 +39,28 @@ open class AgoraLobbyVC: UIViewController  {
     override open func viewDidLoad() {
         super.viewDidLoad()
         createUI()
+        
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("LobbyVC - viewWillAppear")
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("LobbyVC - viewDidAppear")
+        if arBroadcastVC == nil {
+            arBroadcastVC = ARBroadcaster()
+        }
+        if arAudienceVC == nil {
+            arAudienceVC = ARAudience()
+        }
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        print("LobbyVC - viewWillDisappear")
     }
     
     // dismiss the keyboard when user touches the view
@@ -109,7 +119,6 @@ open class AgoraLobbyVC: UIViewController  {
     
     // MARK: Button Actions
     @IBAction open func joinSession() {
-        
         if let channelName = self.userInput.text {
             if channelName != "" {
                 arAudienceVC.channelName = channelName

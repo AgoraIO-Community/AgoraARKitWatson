@@ -42,6 +42,7 @@ open class ARAudience: UIViewController {
     // MARK: VC Events
     override open func loadView() {
         super.loadView()
+        print("AudienceVC - loadView")
         createUI()
         guard let agoraAppID = AgoraARKit.agoraAppId else { return }
         // Add Agora setup
@@ -55,6 +56,7 @@ open class ARAudience: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        print("AudienceVC - viewDidLoad")
         guard self.agoraKit != nil else { return }
         joinChannel() // Agora - join the channel
         
@@ -62,10 +64,12 @@ open class ARAudience: UIViewController {
 
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("AudienceVC - viewWillAppear")
     }
 
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("AudienceVC - viewDidAppear")
         // do something when the view has appeared
         if AgoraARKit.agoraAppId == nil {
             popView()
@@ -74,6 +78,7 @@ open class ARAudience: UIViewController {
 
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        print("AudienceVC - viewWillDisappear")
         leaveChannel();
     }
 

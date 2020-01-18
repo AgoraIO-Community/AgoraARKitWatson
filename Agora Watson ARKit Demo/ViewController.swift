@@ -23,6 +23,18 @@ class ViewController: AgoraLobbyVC  {
         if let agoraLogo = UIImage(named: "ar-support-icon") {
             self.bannerImage = agoraLogo
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         // set images for UI elements within audience and broadcast view controllers
         if let exitBtnImage = UIImage(named: "exit") {
@@ -37,18 +49,6 @@ class ViewController: AgoraLobbyVC  {
             self.arBroadcastVC.muteBtnImage = muteBtnImage
             self.arBroadcastVC.watermarkImage = watermakerImage
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
