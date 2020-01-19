@@ -12,10 +12,6 @@ open class AgoraLobbyVC: UIViewController  {
 
     var debug : Bool = false
     
-    // VCs
-    var arBroadcastVC: ARBroadcaster!
-    var arAudienceVC: ARAudience!
-    
     // UI properties
     var banner: UIImageView?
     var bannerImage: UIImage?
@@ -50,12 +46,6 @@ open class AgoraLobbyVC: UIViewController  {
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("LobbyVC - viewDidAppear")
-        if arBroadcastVC == nil {
-            arBroadcastVC = ARBroadcaster()
-        }
-        if arAudienceVC == nil {
-            arAudienceVC = ARAudience()
-        }
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
@@ -119,6 +109,7 @@ open class AgoraLobbyVC: UIViewController  {
     
     // MARK: Button Actions
     @IBAction open func joinSession() {
+        let arAudienceVC: ARAudience = ARAudience()
         if let channelName = self.userInput.text {
             if channelName != "" {
                 arAudienceVC.channelName = channelName
@@ -132,6 +123,7 @@ open class AgoraLobbyVC: UIViewController  {
     }
     
     @IBAction open func createSession() {
+        let arBroadcastVC: ARBroadcaster = ARBroadcaster()
         if let channelName = self.userInput.text {
             if channelName != "" {
                 arBroadcastVC.channelName = channelName

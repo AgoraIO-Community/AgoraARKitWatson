@@ -12,7 +12,7 @@ import UIKit
 
 class arCoremlBroadcaster: ARBroadcaster {
     
-    let textDepth : Float = 0.01 // the 'depth' of 3D text
+    let textDepth : Float = 0.01 // the 'depth`' of 3D text
     var latestPrediction : String = "…" // a variable containing the latest CoreML prediction
     let mlModel: MLModel = Inceptionv3().model
     
@@ -88,9 +88,10 @@ class arCoremlBroadcaster: ARBroadcaster {
     func updateCoreML() {
         ///////////////////////////
         // Get Camera Image as RGB
-        let pixbuff : CVPixelBuffer? = (sceneView.session.currentFrame?.capturedImage)
-        if pixbuff == nil { return }
-        let ciImage = CIImage(cvPixelBuffer: pixbuff!)
+        guard let sceneView = self.sceneView else { return }
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+        let pixbuff : CVPixelBuffer = currentFrame.capturedImage
+        let ciImage = CIImage(cvPixelBuffer: pixbuff)
         // Note: Not entirely sure if the ciImage is being interpreted as RGB, but for now it works with the Inception model.
         // Note2: Also uncertain if the pixelBuffer should be rotated before handing off to Vision (VNImageRequestHandler) - regardless, for now, it still works well with the Inception model.
         

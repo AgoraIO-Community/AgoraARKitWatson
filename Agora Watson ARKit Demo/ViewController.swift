@@ -16,8 +16,7 @@ class ViewController: AgoraLobbyVC  {
         super.loadView()
         
         AgoraARKit.agoraAppId = "66b9d68bd5a14be9b8d35c05fd34f88d"
-//        self.arBroadcastVC = arCoremlBroadcaster()
-        self.arBroadcastVC = arWatsonBroadcaster()
+
         
         // set the banner image within the initial view
         if let agoraLogo = UIImage(named: "ar-support-icon") {
@@ -37,22 +36,54 @@ class ViewController: AgoraLobbyVC  {
         super.viewDidAppear(animated)
         
         // set images for UI elements within audience and broadcast view controllers
-        if let exitBtnImage = UIImage(named: "exit") {
-            self.arAudienceVC.backBtnImage = exitBtnImage
-            self.arBroadcastVC.backBtnImage = exitBtnImage
-        }
-        
-        if let micBtnImage = UIImage(named: "mic"),
-            let muteBtnImage = UIImage(named: "mute"),
-            let watermakerImage = UIImage(named: "agora-logo") {
-            self.arBroadcastVC.micBtnImage = micBtnImage
-            self.arBroadcastVC.muteBtnImage = muteBtnImage
-            self.arBroadcastVC.watermarkImage = watermakerImage
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    // MARK: Button Actions
+    @IBAction override func joinSession() {
+        if let channelName = self.userInput.text {
+            if channelName != "" {
+                let arAudienceVC = ARAudience()
+                if let exitBtnImage = UIImage(named: "exit") {
+                    arAudienceVC.backBtnImage = exitBtnImage
+                }
+                arAudienceVC.channelName = channelName
+                arAudienceVC.modalPresentationStyle = .fullScreen
+                self.present(arAudienceVC, animated: true, completion: nil)
+            } else {
+               // TODO: add visible msg to user
+               print("unable to join a broadcast without a channel name")
+            }
+        }
+    }
+    
+    @IBAction override func createSession() {
+        if let channelName = self.userInput.text {
+            if channelName != "" {
+                let arBroadcastVC = arCoremlBroadcaster()
+        //        let arBroadcastVC = arWatsonBroadcaster()
+                if let exitBtnImage = UIImage(named: "exit") {
+                    arBroadcastVC.backBtnImage = exitBtnImage
+                }
+                if let micBtnImage = UIImage(named: "mic"),
+                    let muteBtnImage = UIImage(named: "mute"),
+                    let watermakerImage = UIImage(named: "agora-logo") {
+                    arBroadcastVC.micBtnImage = micBtnImage
+                    arBroadcastVC.muteBtnImage = muteBtnImage
+                    arBroadcastVC.watermarkImage = watermakerImage
+                }
+                
+                arBroadcastVC.channelName = channelName
+                arBroadcastVC.modalPresentationStyle = .fullScreen
+                self.present(arBroadcastVC, animated: true, completion: nil)
+            } else {
+               // TODO: add visible msg to user
+               print("unable to launch a broadcast without a channel name")
+            }
+        }
     }
     
 }
