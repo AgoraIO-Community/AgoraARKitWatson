@@ -8,10 +8,20 @@
 
 import Foundation
 import VisualRecognition
+import IBMSwiftSDKCore
 
 class arWatsonBroadcaster: ARBroadcaster {
     
-    let watsonAuth: WatsonAuthenticator = WatsonIAMAuthenticator(apiKey: "", url: "")
+//    func authenticate(request: RestRequest, completionHandler: @escaping (RestRequest?, RestError?) -> Void) {
+//        print("authenticate RestRequest")
+//    }
+//
+//    func authenticate(request: URLRequest, completionHandler: @escaping (URLRequest?, RestError?) -> Void) {
+//        print("authenticate URLRequest")
+//    }
+//
+    
+    let watsonAuth: WatsonAuthenticator = WatsonIAMAuthenticator(apiKey: "tFvymVbfSpY-pIrlduqgSsxIBhAZagluDVd4caP7dTsl", url: "https://api.us-south.visual-recognition.watson.cloud.ibm.com/instances/91a3a4e9-c831-4b2c-b788-49602a27972c")
     var visualRecognition: VisualRecognition!
     
     // Name of the classifier to use

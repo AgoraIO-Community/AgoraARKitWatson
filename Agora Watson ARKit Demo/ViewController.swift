@@ -63,8 +63,9 @@ class ViewController: AgoraLobbyVC  {
     @IBAction override func createSession() {
         if let channelName = self.userInput.text {
             if channelName != "" {
-                let arBroadcastVC = arCoremlBroadcaster()
-        //        let arBroadcastVC = arWatsonBroadcaster()
+//                let arBroadcastVC = arCoremlBroadcaster()
+//                let arBroadcastVC = arWatsonBroadcaster()
+                let arBroadcastVC = ARBroadcaster()
                 if let exitBtnImage = UIImage(named: "exit") {
                     arBroadcastVC.backBtnImage = exitBtnImage
                 }

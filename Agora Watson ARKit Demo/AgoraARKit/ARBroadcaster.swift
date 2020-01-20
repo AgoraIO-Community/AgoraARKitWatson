@@ -27,7 +27,7 @@ open class ARBroadcaster: UIViewController {
     var agoraKit: AgoraRtcEngineKit!                    // Agora.io Video Engine reference
     var arVideoSource: ARVideoSource = ARVideoSource()  // for passing the AR camera as the stream
     var channelProfile: AgoraChannelProfile = .liveBroadcasting
-    var frameRate: AgoraVideoFrameRate = .fps60
+    var frameRate: AgoraVideoFrameRate = .fps30
     var videoDimension: CGSize = AgoraVideoDimension640x360
     var videoBitRate: Int = AgoraVideoBitrateStandard
     var videoOutputOrientationMode: AgoraVideoOutputOrientationMode = .fixedPortrait
@@ -121,9 +121,7 @@ open class ARBroadcaster: UIViewController {
 
     override open func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        print("viewWillAppear")
-        
-        // Configure ARKit Session
+        print("viewWillAppear")        // Configure ARKit Session
         let configuration = ARWorldTrackingConfiguration()
         if let planeDetection = self.planeDetection {
             configuration.planeDetection = planeDetection

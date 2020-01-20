@@ -17,4 +17,8 @@ extension ARBroadcaster: ARSessionDelegate {
         guard self.agoraKit != nil else { return }
         self.agoraKit.pushExternalAudioFrameSampleBuffer(audioSampleBuffer)
     }
+    
+    open func session(_ session: ARSession, didFailWithError error: Error) {
+        print("session failed with error: \(error)")
+    }
 }
