@@ -14,7 +14,8 @@ class arCoremlBroadcaster: ARBroadcaster {
     
     let textDepth : Float = 0.01 // the 'depth`' of 3D text
     var latestPrediction : String = "…" // a variable containing the latest CoreML prediction
-    let mlModel: MLModel = Inceptionv3().model
+//    let mlModel: MLModel = Inceptionv3().model
+    let mlModel: MLModel = HotdogNotHotdog().model
     
     // COREML
     var visionRequests = [VNRequest]()

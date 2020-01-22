@@ -25,7 +25,7 @@ class arWatsonBroadcaster: ARBroadcaster {
     var visualRecognition: VisualRecognition!
     
     // Name of the classifier to use
-    let classifierID = "food"
+    let classifierID = "HotdogCustomModel_1904448169"
 
     // Minimum confidence threshold for image recognition
     let threshold = 0.5

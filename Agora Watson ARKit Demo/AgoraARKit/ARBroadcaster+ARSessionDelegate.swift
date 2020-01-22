@@ -9,6 +9,7 @@
 import ARKit
 
 extension ARBroadcaster: ARSessionDelegate {
+    
     open func session(_ session: ARSession, didUpdate frame: ARFrame) {
         
     }
@@ -20,5 +21,9 @@ extension ARBroadcaster: ARSessionDelegate {
     
     open func session(_ session: ARSession, didFailWithError error: Error) {
         print("session failed with error: \(error)")
+    }
+    
+    open func sessionWasInterrupted(_ session: ARSession) {
+        print("sessionWasInterrupted")
     }
 }

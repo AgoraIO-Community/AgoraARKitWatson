@@ -116,7 +116,7 @@ open class ARBroadcaster: UIViewController {
        self.sceneView.automaticallyUpdatesLighting = autoUpdateLights
        
        guard self.agoraKit != nil else { return }
-       joinChannel() // Agora - join the channel
+//       joinChannel() // Agora - join the channel
    }
 
     override open func viewWillAppear(_ animated: Bool) {
@@ -126,7 +126,8 @@ open class ARBroadcaster: UIViewController {
         if let planeDetection = self.planeDetection {
             configuration.planeDetection = planeDetection
         }
-        configuration.providesAudioData = true  // AR session needs to provide the audio data
+        // TODO: Enable Audio Data when iPhoneX bug is resolved
+//        configuration.providesAudioData = true  // AR session needs to provide the audio data
         configuration.isLightEstimationEnabled = lightEstimation
         // run the config to start the ARSession
         self.sceneView.session.run(configuration)
@@ -138,7 +139,10 @@ open class ARBroadcaster: UIViewController {
         print("viewDidAppear")
         if AgoraARKit.agoraAppId == nil {
             popView()
+        } else {
+            joinChannel() // Agora - join the channel
         }
+        
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
@@ -164,7 +168,7 @@ open class ARBroadcaster: UIViewController {
     // MARK: Agora Interface
     open func joinChannel() {
         // Set audio route to speaker
-        self.agoraKit.setDefaultAudioRouteToSpeakerphone(defaultToSpeakerPhone)
+//        self.agoraKit.setDefaultAudioRouteToSpeakerphone(defaultToSpeakerPhone)
         // Join the channel
         self.agoraKit.joinChannel(byToken: AgoraARKit.agoraToken, channelId: self.channelName, info: nil, uid: 0) { [weak self] (channel, uid, elapsed) in
             if self!.showLogs {
