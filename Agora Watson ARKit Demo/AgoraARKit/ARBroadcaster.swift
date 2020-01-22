@@ -27,7 +27,7 @@ open class ARBroadcaster: UIViewController {
     var agoraKit: AgoraRtcEngineKit!                    // Agora.io Video Engine reference
     var arVideoSource: ARVideoSource = ARVideoSource()  // for passing the AR camera as the stream
     var channelProfile: AgoraChannelProfile = .liveBroadcasting
-    var frameRate: AgoraVideoFrameRate = .fps60
+    var frameRate: AgoraVideoFrameRate = .fps30
     var videoDimension: CGSize = AgoraVideoDimension640x360
     var videoBitRate: Int = AgoraVideoBitrateStandard
     var videoOutputOrientationMode: AgoraVideoOutputOrientationMode = .fixedPortrait
@@ -61,12 +61,13 @@ open class ARBroadcaster: UIViewController {
     
     
     // Debugging
-    internal let debug: Bool = true                             // toggle the debug logs
+    internal let debug: Bool = false                             // toggle the debug logs
     var showLogs: Bool = true
     
     // MARK: VC Events
     override open func loadView() {
         super.loadView()
+        print("loadView")
         self.view.backgroundColor = viewBackgroundColor
         createUI()
         guard let agoraAppID = AgoraARKit.agoraAppId else { return }
@@ -84,70 +85,79 @@ open class ARBroadcaster: UIViewController {
         self.agoraKit = agoraKit // set a reference to the Agora engine
         
     }
+    
+    override open func viewDidLoad() {
+       super.viewDidLoad()
+       print("viewDidLoad")
+       // set render delegate
+       self.sceneView.delegate = self
+       self.sceneView.session.delegate = self
+       
+       // setup ARViewRecorder
+       self.arvkRenderer = RecordAR(ARSceneKit: self.sceneView)
+       self.arvkRenderer?.renderAR = self // Set the renderer's delegate
+       // Configure the renderer to always render the scene
+       self.arvkRenderer?.onlyRenderWhileRecording = false
+       // Configure ARKit content mode. Default is .auto
+       self.arvkRenderer?.contentMode = .aspectFit
+       // add environment light during rendering
+       self.arvkRenderer?.enableAdjustEnvironmentLighting = lightEstimation
+       // Set the UIViewController orientations
+       self.arvkRenderer?.inputViewOrientations = [.portrait]
+       // TODO: create enum to translate between Agora Orientation and ARVideoKit
+
+       if debug {
+           self.sceneView.debugOptions = arSceneDebugOptions
+           self.sceneView.showsStatistics = showStatistics
+       }
+       
+       // add default lights to the scene
+       self.sceneView.autoenablesDefaultLighting = enableDefaultLighting
+       self.sceneView.automaticallyUpdatesLighting = autoUpdateLights
+       
+       guard self.agoraKit != nil else { return }
+//       joinChannel() // Agora - join the channel
+   }
 
     override open func viewWillAppear(_ animated: Bool) {
         super .viewWillAppear(animated)
-        
-        
-        // Configure ARKit Session
+        print("viewWillAppear")        // Configure ARKit Session
         let configuration = ARWorldTrackingConfiguration()
         if let planeDetection = self.planeDetection {
             configuration.planeDetection = planeDetection
         }
-        configuration.providesAudioData = true  // AR session needs to provide the audio data
+        // TODO: Enable Audio Data when iPhoneX bug is resolved
+//        configuration.providesAudioData = true  // AR session needs to provide the audio data
         configuration.isLightEstimationEnabled = lightEstimation
         // run the config to start the ARSession
         self.sceneView.session.run(configuration)
         self.arvkRenderer?.prepare(configuration)
     }
     
-    override open func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // stop the ARVideoKit renderer
-        arvkRenderer.rest()
-        // Cleanup the session as the view is removed from heirarchy
-        self.sceneView.session.pause()
-//        self.sceneView.removeFromSuperview()
-    }
-    
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // set render delegate
-        self.sceneView.delegate = self
-        self.sceneView.session.delegate = self
-        
-        // setup ARViewRecorder
-        self.arvkRenderer = RecordAR(ARSceneKit: self.sceneView)
-        self.arvkRenderer?.renderAR = self // Set the renderer's delegate
-        // Configure the renderer to always render the scene
-        self.arvkRenderer?.onlyRenderWhileRecording = false
-        // Configure ARKit content mode. Default is .auto
-        self.arvkRenderer?.contentMode = .aspectFit
-        // add environment light during rendering
-        self.arvkRenderer?.enableAdjustEnvironmentLighting = lightEstimation
-        // Set the UIViewController orientations
-        self.arvkRenderer?.inputViewOrientations = [.portrait]
-        // TODO: create enum to translate between Agora Orientation and ARVideoKit
-
-        if debug {
-            self.sceneView.debugOptions = arSceneDebugOptions
-            self.sceneView.showsStatistics = showStatistics
-        }
-        
-        // add default lights to the scene
-        self.sceneView.autoenablesDefaultLighting = enableDefaultLighting
-        self.sceneView.automaticallyUpdatesLighting = autoUpdateLights
-        
-        guard self.agoraKit != nil else { return }
-        joinChannel() // Agora - join the channel
-    }
-    
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("viewDidAppear")
         if AgoraARKit.agoraAppId == nil {
             popView()
+        } else {
+            joinChannel() // Agora - join the channel
         }
+        
+    }
+    
+    override open func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear")
+        // Cleanup the session as the view is removed from heirarchy
+        self.sceneView.session.pause()
+    }
+    
+    
+    override open func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("viewDidDisappear")
+        sceneView.removeFromSuperview()
+        sceneView = nil
     }
     
     // MARK: Hide status bar
@@ -158,10 +168,10 @@ open class ARBroadcaster: UIViewController {
     // MARK: Agora Interface
     open func joinChannel() {
         // Set audio route to speaker
-        self.agoraKit.setDefaultAudioRouteToSpeakerphone(defaultToSpeakerPhone)
+//        self.agoraKit.setDefaultAudioRouteToSpeakerphone(defaultToSpeakerPhone)
         // Join the channel
-        self.agoraKit.joinChannel(byToken: AgoraARKit.agoraToken, channelId: self.channelName, info: nil, uid: 0) { (channel, uid, elapsed) in
-          if self.showLogs {
+        self.agoraKit.joinChannel(byToken: AgoraARKit.agoraToken, channelId: self.channelName, info: nil, uid: 0) { [weak self] (channel, uid, elapsed) in
+            if self!.showLogs {
               print("Successfully joined: \(channel), with \(uid): \(elapsed) secongs ago")
           }
         }
@@ -239,6 +249,7 @@ open class ARBroadcaster: UIViewController {
     @IBAction func popView() {
         leaveChannel()
         self.dismiss(animated: true, completion: nil)
+//        self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func toggleMic() {

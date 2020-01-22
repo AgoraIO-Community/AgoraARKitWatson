@@ -8,7 +8,7 @@ target 'Agora Watson ARKit Demo' do
   # Pods for Agora Watson ARKit Demo
   pod 'AgoraRtcEngine_iOS'
   pod 'ARVideoKit', :git => 'https://github.com/AFathi/ARVideoKit', :branch => 'swift_4_2' # record ARKit session
-
+  pod 'IBMWatsonVisualRecognitionV3'
 
   target 'Agora Watson ARKit DemoTests' do
     inherit! :search_paths

@@ -12,16 +12,17 @@ import UIKit
 
 class arCoremlBroadcaster: ARBroadcaster {
     
-    let textDepth : Float = 0.01 // the 'depth' of 3D text
+    let textDepth : Float = 0.01 // the 'depth`' of 3D text
     var latestPrediction : String = "…" // a variable containing the latest CoreML prediction
-    let mlModel: MLModel = Inceptionv3().model
+//    let mlModel: MLModel = Inceptionv3().model
+    let mlModel: MLModel = HotdogNotHotdog().model
     
     // COREML
     var visionRequests = [VNRequest]()
     let dispatchQueueML = DispatchQueue(label: "io.agora.dispatchqueue.ml") // A Serial Queue
     
     override func viewDidLoad() {
- 
+        super.viewDidLoad()
         // Set up Vision Model - This can be replaced with other models on
         guard let selectedModel = try? VNCoreMLModel(for: mlModel) else {  // https://developer.apple.com/machine-learning/
             fatalError("Could not load model. Models available from https://developer.apple.com/machine-learning . Ensure Coreml model is in your XCode Project and part of a target (see: https://stackoverflow.com/questions/45884085/model-is-not-part-of-any-target-add-the-model-to-a-target-to-enable-generation ")
@@ -88,9 +89,10 @@ class arCoremlBroadcaster: ARBroadcaster {
     func updateCoreML() {
         ///////////////////////////
         // Get Camera Image as RGB
-        let pixbuff : CVPixelBuffer? = (sceneView.session.currentFrame?.capturedImage)
-        if pixbuff == nil { return }
-        let ciImage = CIImage(cvPixelBuffer: pixbuff!)
+        guard let sceneView = self.sceneView else { return }
+        guard let currentFrame = sceneView.session.currentFrame else { return }
+        let pixbuff : CVPixelBuffer = currentFrame.capturedImage
+        let ciImage = CIImage(cvPixelBuffer: pixbuff)
         // Note: Not entirely sure if the ciImage is being interpreted as RGB, but for now it works with the Inception model.
         // Note2: Also uncertain if the pixelBuffer should be rotated before handing off to Vision (VNImageRequestHandler) - regardless, for now, it still works well with the Inception model.
         
