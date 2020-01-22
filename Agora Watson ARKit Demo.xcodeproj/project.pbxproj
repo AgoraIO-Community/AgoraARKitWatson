@@ -26,13 +26,6 @@
 		0340072823CF8C48000A1E82 /* ARVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072723CF8C48000A1E82 /* ARVideoSource.swift */; };
 		0340072A23CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072923CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift */; };
 		0340072C23CFB412000A1E82 /* AgoraARKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072B23CFB412000A1E82 /* AgoraARKit.swift */; };
-		0340084023D1FD50000A1E82 /* arCoremlBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340083F23D1FD50000A1E82 /* arCoremlBroadcaster.swift */; };
-		0340084223D2282F000A1E82 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0340084123D2282E000A1E82 /* Inceptionv3.mlmodel */; };
-		0340084423D23239000A1E82 /* arWatsonBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */; };
-		0340084823D26931000A1E82 /* watson_keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0340084723D26931000A1E82 /* watson_keys.plist */; };
-		03A19BE623D8B4F80069F79A /* HotdogNotHotdog.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE523D8B4F80069F79A /* HotdogNotHotdog.mlmodel */; };
-		03A19BE823D8D6B90069F79A /* Hotdog.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE723D8D6B90069F79A /* Hotdog.mlmodel */; };
-		03A19BEA23D8D8350069F79A /* arHotDogBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */; };
 		8D1DB4E2C345F21BD5CA6E2B /* Pods_Agora_Watson_ARKit_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A1873779F667E22F672184 /* Pods_Agora_Watson_ARKit_Demo.framework */; };
 		CA42D896B246CCFCB9F367B3 /* Pods_Agora_Watson_ARKit_Demo_Agora_Watson_ARKit_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A843C14930C207FE0A773C8D /* Pods_Agora_Watson_ARKit_Demo_Agora_Watson_ARKit_DemoUITests.framework */; };
 		D1EE13697746FEA7B557F947 /* Pods_Agora_Watson_ARKit_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9398D852C2C9B65938884 /* Pods_Agora_Watson_ARKit_DemoTests.framework */; };
@@ -81,13 +74,6 @@
 		0340072723CF8C48000A1E82 /* ARVideoSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVideoSource.swift; sourceTree = "<group>"; };
 		0340072923CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARBroadcaster+RenderARDelegate.swift"; sourceTree = "<group>"; };
 		0340072B23CFB412000A1E82 /* AgoraARKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraARKit.swift; sourceTree = "<group>"; };
-		0340083F23D1FD50000A1E82 /* arCoremlBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = arCoremlBroadcaster.swift; path = AgoraARKit/arCoremlBroadcaster.swift; sourceTree = "<group>"; };
-		0340084123D2282E000A1E82 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
-		0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arWatsonBroadcaster.swift; sourceTree = "<group>"; };
-		0340084723D26931000A1E82 /* watson_keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = watson_keys.plist; path = ../watson_keys.plist; sourceTree = "<group>"; };
-		03A19BE523D8B4F80069F79A /* HotdogNotHotdog.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HotdogNotHotdog.mlmodel; sourceTree = "<group>"; };
-		03A19BE723D8D6B90069F79A /* Hotdog.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Hotdog.mlmodel; sourceTree = "<group>"; };
-		03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arHotDogBroadcaster.swift; sourceTree = "<group>"; };
 		44ECFE25CCEB536B1A7D7ECC /* Pods-Agora Watson ARKit DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit DemoTests.release.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit DemoTests/Pods-Agora Watson ARKit DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		688A4AE04F37515CDE2BCFC7 /* Pods-Agora Watson ARKit Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit Demo.debug.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit Demo/Pods-Agora Watson ARKit Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		6FF57519745453CE3B8F3099 /* Pods-Agora Watson ARKit DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit DemoTests/Pods-Agora Watson ARKit DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,15 +138,8 @@
 		034006E223CE7B54000A1E82 /* Agora Watson ARKit Demo */ = {
 			isa = PBXGroup;
 			children = (
-				0340084723D26931000A1E82 /* watson_keys.plist */,
-				0340084123D2282E000A1E82 /* Inceptionv3.mlmodel */,
-				03A19BE723D8D6B90069F79A /* Hotdog.mlmodel */,
-				03A19BE523D8B4F80069F79A /* HotdogNotHotdog.mlmodel */,
-				0340083F23D1FD50000A1E82 /* arCoremlBroadcaster.swift */,
-				0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */,
 				034006E323CE7B54000A1E82 /* AppDelegate.swift */,
 				034006E723CE7B54000A1E82 /* ViewController.swift */,
-				03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */,
 				0340072D23CFBC26000A1E82 /* AgoraARKit */,
 				034006E923CE7B54000A1E82 /* Main.storyboard */,
 				034006EC23CE7B55000A1E82 /* Assets.xcassets */,
@@ -341,7 +320,6 @@
 			files = (
 				034006F023CE7B55000A1E82 /* LaunchScreen.storyboard in Resources */,
 				034006ED23CE7B55000A1E82 /* Assets.xcassets in Resources */,
-				0340084823D26931000A1E82 /* watson_keys.plist in Resources */,
 				034006EB23CE7B54000A1E82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,20 +452,14 @@
 				0340072223CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift in Sources */,
 				034006E823CE7B54000A1E82 /* ViewController.swift in Sources */,
 				0340071E23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift in Sources */,
-				03A19BE623D8B4F80069F79A /* HotdogNotHotdog.mlmodel in Sources */,
-				0340084023D1FD50000A1E82 /* arCoremlBroadcaster.swift in Sources */,
 				0340071623CEBA10000A1E82 /* AgoraLobbyVC.swift in Sources */,
 				0340072423CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift in Sources */,
 				0340071C23CEC130000A1E82 /* ARBroadcaster.swift in Sources */,
 				0340071A23CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift in Sources */,
-				0340084423D23239000A1E82 /* arWatsonBroadcaster.swift in Sources */,
 				0340072A23CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift in Sources */,
 				0340071823CEBE25000A1E82 /* ARAudience.swift in Sources */,
 				034006E423CE7B54000A1E82 /* AppDelegate.swift in Sources */,
-				03A19BEA23D8D8350069F79A /* arHotDogBroadcaster.swift in Sources */,
 				0340072823CF8C48000A1E82 /* ARVideoSource.swift in Sources */,
-				0340084223D2282F000A1E82 /* Inceptionv3.mlmodel in Sources */,
-				03A19BE823D8D6B90069F79A /* Hotdog.mlmodel in Sources */,
 				0340071423CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift in Sources */,
 				0340072623CF8BEA000A1E82 /* SCNVector3+Extensions.swift in Sources */,
 			);
