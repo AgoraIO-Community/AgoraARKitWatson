@@ -33,6 +33,7 @@
 		03A19BE623D8B4F80069F79A /* HotdogNotHotdog.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE523D8B4F80069F79A /* HotdogNotHotdog.mlmodel */; };
 		03A19BE823D8D6B90069F79A /* Hotdog.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE723D8D6B90069F79A /* Hotdog.mlmodel */; };
 		03A19BEA23D8D8350069F79A /* arHotDogBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */; };
+		03A19BF223D8E1460069F79A /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A19BF123D8E1460069F79A /* UIFont+extension.swift */; };
 		8D1DB4E2C345F21BD5CA6E2B /* Pods_Agora_Watson_ARKit_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A1873779F667E22F672184 /* Pods_Agora_Watson_ARKit_Demo.framework */; };
 		CA42D896B246CCFCB9F367B3 /* Pods_Agora_Watson_ARKit_Demo_Agora_Watson_ARKit_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A843C14930C207FE0A773C8D /* Pods_Agora_Watson_ARKit_Demo_Agora_Watson_ARKit_DemoUITests.framework */; };
 		D1EE13697746FEA7B557F947 /* Pods_Agora_Watson_ARKit_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9398D852C2C9B65938884 /* Pods_Agora_Watson_ARKit_DemoTests.framework */; };
@@ -88,6 +89,7 @@
 		03A19BE523D8B4F80069F79A /* HotdogNotHotdog.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HotdogNotHotdog.mlmodel; sourceTree = "<group>"; };
 		03A19BE723D8D6B90069F79A /* Hotdog.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Hotdog.mlmodel; sourceTree = "<group>"; };
 		03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arHotDogBroadcaster.swift; sourceTree = "<group>"; };
+		03A19BF123D8E1460069F79A /* UIFont+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
 		44ECFE25CCEB536B1A7D7ECC /* Pods-Agora Watson ARKit DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit DemoTests.release.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit DemoTests/Pods-Agora Watson ARKit DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		688A4AE04F37515CDE2BCFC7 /* Pods-Agora Watson ARKit Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit Demo.debug.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit Demo/Pods-Agora Watson ARKit Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		6FF57519745453CE3B8F3099 /* Pods-Agora Watson ARKit DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agora Watson ARKit DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-Agora Watson ARKit DemoTests/Pods-Agora Watson ARKit DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */,
 				034006E323CE7B54000A1E82 /* AppDelegate.swift */,
 				034006E723CE7B54000A1E82 /* ViewController.swift */,
+				03A19BF123D8E1460069F79A /* UIFont+extension.swift */,
 				03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */,
 				0340072D23CFBC26000A1E82 /* AgoraARKit */,
 				034006E923CE7B54000A1E82 /* Main.storyboard */,
@@ -474,6 +477,7 @@
 				0340072223CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift in Sources */,
 				034006E823CE7B54000A1E82 /* ViewController.swift in Sources */,
 				0340071E23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift in Sources */,
+				03A19BF223D8E1460069F79A /* UIFont+extension.swift in Sources */,
 				03A19BE623D8B4F80069F79A /* HotdogNotHotdog.mlmodel in Sources */,
 				0340084023D1FD50000A1E82 /* arCoremlBroadcaster.swift in Sources */,
 				0340071623CEBA10000A1E82 /* AgoraLobbyVC.swift in Sources */,

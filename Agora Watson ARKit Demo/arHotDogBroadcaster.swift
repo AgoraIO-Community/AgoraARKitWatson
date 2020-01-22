@@ -8,14 +8,15 @@
 
 import Vision
 import UIKit
+import ARKit
 
 
 class arHotDogBroadcaster: ARBroadcaster {
     
     let textDepth : Float = 0.01 // the 'depth`' of 3D text
-    var latestPrediction : String = "…" // a variable containing the latest CoreML prediction
-//    let mlModel: MLModel = Inceptionv3().model
     let mlModel: MLModel = Hotdog().model
+    var clearBtn: UIButton!
+    var resultsRootNode: SCNNode!
     
     // COREML
     var visionRequests = [VNRequest]()
@@ -34,7 +35,32 @@ class arHotDogBroadcaster: ARBroadcaster {
         visionRequests = [classificationRequest]
         
         // Begin Loop to Update CoreML
-        loopCoreMLUpdate()
+//        loopCoreMLUpdate()
+        
+        // add clear button to UI
+        let clearBtn: UIButton = UIButton()
+        clearBtn.frame = CGRect(x: self.view.frame.minX+25, y: self.view.frame.maxY - 65, width: 40, height: 40)
+        if let clearBtnImage = UIImage(named: "trash") {
+            clearBtn.setImage(clearBtnImage, for: .normal)
+        } else {
+            clearBtn.setTitle("clear", for: .normal)
+        }
+        
+        clearBtn.addTarget(self, action: #selector(clearResults), for: .touchUpInside)
+        self.view.insertSubview(clearBtn, at: 2)
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        resultsRootNode = SCNNode()
+        sceneView.scene.rootNode.addChildNode(resultsRootNode)
+//        resultsRootNode
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        dispatchQueueML.async {
+            self.updateCoreML() // Run Update
+        }
     }
     
     // MARK: - CoreML Vision Handling
@@ -60,31 +86,34 @@ class arHotDogBroadcaster: ARBroadcaster {
         }
         
         // Get Classifications
-        let classifications = observations[0...0] // top 2 results
-            .flatMap({ $0 as? VNClassificationObservation })
-            .map({ "\($0.identifier) \(String(format:"- %.2f", $0.confidence))" })
-            .joined(separator: "\n")
+        let classification: VNClassificationObservation = observations.first as! VNClassificationObservation
+//            .flatMap({ $0 as? VNClassificationObservation })
+//            .map({ "\($0.identifier) \(String(format:"- %.2f", $0.confidence))" })
+//            .joined(separator: "\n")
         
         
         DispatchQueue.main.async {
             // Print Classifications
-            print(classifications)
             print("--")
             
             // Display Debug Text on screen
-            var debugText: String = ""
-            debugText += classifications
+            let debugText: String = "- \(classification.identifier) : \(classification.confidence)"
             print(debugText)
 //            self.debugTextView.text = debugText
             
-            // Store the latest prediction
-            var objectName: String = "…"
-            objectName = classifications.components(separatedBy: "-")[0]
-            objectName = objectName.components(separatedBy: ",")[0]
-            self.latestPrediction = objectName
+            // Display prediction
+            var objectName: String = "Not Hotdog"
+            if classification.confidence > 0.4 {
+                objectName = "Hotdog"
+            }
+            
+            // show the result
+            self.showResult(objectName)
             
         }
     }
+    
+    
 
     func updateCoreML() {
         ///////////////////////////
@@ -93,14 +122,11 @@ class arHotDogBroadcaster: ARBroadcaster {
         guard let currentFrame = sceneView.session.currentFrame else { return }
         let pixbuff : CVPixelBuffer = currentFrame.capturedImage
         let ciImage = CIImage(cvPixelBuffer: pixbuff)
-        // Note: Not entirely sure if the ciImage is being interpreted as RGB, but for now it works with the Inception model.
-        // Note2: Also uncertain if the pixelBuffer should be rotated before handing off to Vision (VNImageRequestHandler) - regardless, for now, it still works well with the Inception model.
         
         ///////////////////////////
         // Prepare CoreML/Vision Request
         let imageRequestHandler = VNImageRequestHandler(ciImage: ciImage, options: [:])
-        // let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage!, orientation: myOrientation, options: [:]) // Alternatively; we can convert the above to an RGB CGImage and use that. Also UIInterfaceOrientation can inform orientation values.
-        
+
         ///////////////////////////
         // Run Image Request
         do {
@@ -109,6 +135,74 @@ class arHotDogBroadcaster: ARBroadcaster {
             print(error)
         }
         
+    }
+    
+    //MARK: Show CV in AR
+    func showResult(_ result: String) {
+        // HIT TEST : REAL WORLD
+        // Get Screen Centre
+        let screenCentre : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
+        
+        let arHitTestResults : [ARHitTestResult] = sceneView.hitTest(screenCentre, types: [.featurePoint]) // Alternatively, we could use '.existingPlaneUsingExtent' for more grounded hit-test-points.
+        
+        if let closestResult = arHitTestResults.first {
+            // Get Coordinates of HitTest
+            let transform : matrix_float4x4 = closestResult.worldTransform
+            let worldCoord : SCNVector3 = SCNVector3Make(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
+            
+            // Create 3D Text
+            let node : SCNNode = createNewBubbleParentNode(result)
+            resultsRootNode.addChildNode(node)
+            node.position = worldCoord
+        }
+    }
+    
+    func createNewBubbleParentNode(_ text : String) -> SCNNode {
+        // Warning: Creating 3D Text is susceptible to crashing. To reduce chances of crashing; reduce number of polygons, letters, smoothness, etc.
+        print("shwo result: \(text)")
+        // TEXT BILLBOARD CONSTRAINT
+        let billboardConstraint = SCNBillboardConstraint()
+        billboardConstraint.freeAxes = SCNBillboardAxis.Y
+        
+        // BUBBLE-TEXT
+        let bubble = SCNText(string: text, extrusionDepth: CGFloat(textDepth))
+        var font = UIFont(name: "Helvetica", size: 0.15)
+        font = font?.withTraits(traits: .traitBold)
+        bubble.font = font
+        bubble.alignmentMode = CATextLayerAlignmentMode.center.rawValue
+        bubble.firstMaterial?.diffuse.contents = UIColor.orange
+        bubble.firstMaterial?.specular.contents = UIColor.white
+        bubble.firstMaterial?.isDoubleSided = true
+        // bubble.flatness // setting this too low can cause crashes.
+        bubble.chamferRadius = CGFloat(textDepth)
+        
+        // BUBBLE NODE
+        let (minBound, maxBound) = bubble.boundingBox
+        let bubbleNode = SCNNode(geometry: bubble)
+        // Centre Node - to Centre-Bottom point
+        bubbleNode.pivot = SCNMatrix4MakeTranslation( (maxBound.x - minBound.x)/2, minBound.y, textDepth/2)
+        // Reduce default text size
+        bubbleNode.scale = SCNVector3Make(0.2, 0.2, 0.2)
+        
+        // CENTRE POINT NODE
+        let sphere = SCNSphere(radius: 0.005)
+        sphere.firstMaterial?.diffuse.contents = UIColor.cyan
+        let sphereNode = SCNNode(geometry: sphere)
+        
+        // BUBBLE PARENT NODE
+        let bubbleNodeParent = SCNNode()
+        bubbleNodeParent.addChildNode(bubbleNode)
+        bubbleNodeParent.addChildNode(sphereNode)
+        bubbleNodeParent.constraints = [billboardConstraint]
+        
+        return bubbleNodeParent
+    }
+    
+    @objc func clearResults() {
+        for child in resultsRootNode.childNodes {
+            child.isHidden = true
+            child.removeFromParentNode()
+        }
     }
 }
 
