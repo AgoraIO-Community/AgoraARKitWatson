@@ -82,6 +82,7 @@ open class ARBroadcaster: UIViewController {
         agoraKit.enableVideo() // - enable video
         agoraKit.setVideoSource(self.arVideoSource) // - set the video source to the custom AR source
         agoraKit.enableExternalAudioSource(withSampleRate: audioSampleRate, channelsPerFrame: audioChannelsPerFrame) // - enable external audio souce (since video and audio are coming from seperate sources)
+        agoraKit.enableWebSdkInteroperability(true)
         self.agoraKit = agoraKit // set a reference to the Agora engine
         
     }
@@ -128,6 +129,11 @@ open class ARBroadcaster: UIViewController {
         }
         // TODO: Enable Audio Data when iPhoneX bug is resolved
 //        configuration.providesAudioData = true  // AR session needs to provide the audio data
+        // TODO: remove if statement once Agora iPhone X audio bug is resolved
+        let screenMaxLength = max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+        if UIDevice.current.userInterfaceIdiom == .phone && (screenMaxLength >= 896.0 && screenMaxLength <= 1024) {
+            self.agoraKit.setDefaultAudioRouteToSpeakerphone(defaultToSpeakerPhone)
+        }
         configuration.isLightEstimationEnabled = lightEstimation
         // run the config to start the ARSession
         self.sceneView.session.run(configuration)

@@ -15,7 +15,7 @@ class ViewController: AgoraLobbyVC  {
     override func loadView() {
         super.loadView()
         
-        AgoraARKit.agoraAppId = "66b9d68bd5a14be9b8d35c05fd34f88d"
+        AgoraARKit.agoraAppId = ""
 
         
         // set the banner image within the initial view
