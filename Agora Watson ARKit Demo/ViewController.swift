@@ -8,6 +8,7 @@
 
 
 import UIKit
+import AgoraARKit
 
 class ViewController: AgoraLobbyVC  {
 
@@ -16,10 +17,9 @@ class ViewController: AgoraLobbyVC  {
         super.loadView()
         
         AgoraARKit.agoraAppId = ""
-
         
         // set the banner image within the initial view
-        if let agoraLogo = UIImage(named: "ar-support-icon") {
+        if let agoraLogo = UIImage(named: "watson_live_banner") {
             self.bannerImage = agoraLogo
         }
     }
@@ -40,6 +40,24 @@ class ViewController: AgoraLobbyVC  {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    // UI
+    override func createUI() {
+        super.createUI()
+        if let hotdog = UIImage(named: "hotdog-guy") {
+            let hotdogGuy = UIImageView(image: hotdog)
+            hotdogGuy.contentMode = .scaleAspectFit
+            hotdogGuy.frame = CGRect(x: self.view.frame.maxX-100, y: self.view.frame.maxY-100, width: 75, height: 75)
+            self.view.insertSubview(hotdogGuy, at: 2)
+        }
+        
+        if let poweredBy = UIImage(named: "powered-by-agora") {
+            let poweredByAgora = UIImageView(image: poweredBy)
+            poweredByAgora.contentMode = .scaleAspectFit
+            poweredByAgora.frame = CGRect(x: self.view.frame.midX-75, y: self.view.frame.maxY-55, width: 150, height: 37.5)
+            self.view.insertSubview(poweredByAgora, at: 2)
+        }
     }
     
     // MARK: Button Actions
@@ -64,18 +82,13 @@ class ViewController: AgoraLobbyVC  {
         if let channelName = self.userInput.text {
             if channelName != "" {
                 let arBroadcastVC = arHotDogBroadcaster()
-//                let arBroadcastVC = arCoremlBroadcaster()
-//                let arBroadcastVC = arWatsonBroadcaster()
-//                let arBroadcastVC = ARBroadcaster()
                 if let exitBtnImage = UIImage(named: "exit") {
                     arBroadcastVC.backBtnImage = exitBtnImage
                 }
                 if let micBtnImage = UIImage(named: "mic"),
-                    let muteBtnImage = UIImage(named: "mute"),
-                    let watermakerImage = UIImage(named: "agora-logo") {
+                    let muteBtnImage = UIImage(named: "mute") {
                     arBroadcastVC.micBtnImage = micBtnImage
                     arBroadcastVC.muteBtnImage = muteBtnImage
-                    arBroadcastVC.watermarkImage = watermakerImage
                 }
                 
                 arBroadcastVC.channelName = channelName

@@ -14,18 +14,6 @@
 		034006F023CE7B55000A1E82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034006EE23CE7B55000A1E82 /* LaunchScreen.storyboard */; };
 		034006FB23CE7B55000A1E82 /* Agora_Watson_ARKit_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034006FA23CE7B55000A1E82 /* Agora_Watson_ARKit_DemoTests.swift */; };
 		0340070623CE7B55000A1E82 /* Agora_Watson_ARKit_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340070523CE7B55000A1E82 /* Agora_Watson_ARKit_DemoUITests.swift */; };
-		0340071423CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071323CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift */; };
-		0340071623CEBA10000A1E82 /* AgoraLobbyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071523CEBA10000A1E82 /* AgoraLobbyVC.swift */; };
-		0340071823CEBE25000A1E82 /* ARAudience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071723CEBE25000A1E82 /* ARAudience.swift */; };
-		0340071A23CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071923CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift */; };
-		0340071C23CEC130000A1E82 /* ARBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071B23CEC130000A1E82 /* ARBroadcaster.swift */; };
-		0340071E23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340071D23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift */; };
-		0340072223CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072123CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift */; };
-		0340072423CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072323CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift */; };
-		0340072623CF8BEA000A1E82 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072523CF8BEA000A1E82 /* SCNVector3+Extensions.swift */; };
-		0340072823CF8C48000A1E82 /* ARVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072723CF8C48000A1E82 /* ARVideoSource.swift */; };
-		0340072A23CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072923CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift */; };
-		0340072C23CFB412000A1E82 /* AgoraARKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340072B23CFB412000A1E82 /* AgoraARKit.swift */; };
 		0340084023D1FD50000A1E82 /* arCoremlBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340083F23D1FD50000A1E82 /* arCoremlBroadcaster.swift */; };
 		0340084223D2282F000A1E82 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0340084123D2282E000A1E82 /* Inceptionv3.mlmodel */; };
 		0340084423D23239000A1E82 /* arWatsonBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */; };
@@ -69,18 +57,6 @@
 		0340070123CE7B55000A1E82 /* Agora Watson ARKit DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Agora Watson ARKit DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0340070523CE7B55000A1E82 /* Agora_Watson_ARKit_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agora_Watson_ARKit_DemoUITests.swift; sourceTree = "<group>"; };
 		0340070723CE7B55000A1E82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0340071323CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AgoraLobbyVC+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
-		0340071523CEBA10000A1E82 /* AgoraLobbyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraLobbyVC.swift; sourceTree = "<group>"; };
-		0340071723CEBE25000A1E82 /* ARAudience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAudience.swift; sourceTree = "<group>"; };
-		0340071923CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARAudience+AgoraRtcEngineDelegate.swift"; sourceTree = "<group>"; };
-		0340071B23CEC130000A1E82 /* ARBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBroadcaster.swift; sourceTree = "<group>"; };
-		0340071D23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARBroadcaster+AgoraRtcEngineDelegate.swift"; sourceTree = "<group>"; };
-		0340072123CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARBroadcaster+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
-		0340072323CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARBroadcaster+ARSessionDelegate.swift"; sourceTree = "<group>"; };
-		0340072523CF8BEA000A1E82 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
-		0340072723CF8C48000A1E82 /* ARVideoSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVideoSource.swift; sourceTree = "<group>"; };
-		0340072923CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARBroadcaster+RenderARDelegate.swift"; sourceTree = "<group>"; };
-		0340072B23CFB412000A1E82 /* AgoraARKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraARKit.swift; sourceTree = "<group>"; };
 		0340083F23D1FD50000A1E82 /* arCoremlBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = arCoremlBroadcaster.swift; path = AgoraARKit/arCoremlBroadcaster.swift; sourceTree = "<group>"; };
 		0340084123D2282E000A1E82 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		0340084323D23239000A1E82 /* arWatsonBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arWatsonBroadcaster.swift; sourceTree = "<group>"; };
@@ -161,7 +137,6 @@
 				034006E723CE7B54000A1E82 /* ViewController.swift */,
 				03A19BF123D8E1460069F79A /* UIFont+extension.swift */,
 				03A19BE923D8D8350069F79A /* arHotDogBroadcaster.swift */,
-				0340072D23CFBC26000A1E82 /* AgoraARKit */,
 				034006E923CE7B54000A1E82 /* Main.storyboard */,
 				034006EC23CE7B55000A1E82 /* Assets.xcassets */,
 				034006EE23CE7B55000A1E82 /* LaunchScreen.storyboard */,
@@ -186,25 +161,6 @@
 				0340070723CE7B55000A1E82 /* Info.plist */,
 			);
 			path = "Agora Watson ARKit DemoUITests";
-			sourceTree = "<group>";
-		};
-		0340072D23CFBC26000A1E82 /* AgoraARKit */ = {
-			isa = PBXGroup;
-			children = (
-				0340072B23CFB412000A1E82 /* AgoraARKit.swift */,
-				0340071B23CEC130000A1E82 /* ARBroadcaster.swift */,
-				0340072923CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift */,
-				0340072123CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift */,
-				0340072323CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift */,
-				0340071D23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift */,
-				0340071723CEBE25000A1E82 /* ARAudience.swift */,
-				0340071923CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift */,
-				0340071523CEBA10000A1E82 /* AgoraLobbyVC.swift */,
-				0340071323CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift */,
-				0340072723CF8C48000A1E82 /* ARVideoSource.swift */,
-				0340072523CF8BEA000A1E82 /* SCNVector3+Extensions.swift */,
-			);
-			path = AgoraARKit;
 			sourceTree = "<group>";
 		};
 		0681E18287D0CB2E259FD3E3 /* Frameworks */ = {
@@ -469,27 +425,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0340072C23CFB412000A1E82 /* AgoraARKit.swift in Sources */,
-				0340072223CF6D91000A1E82 /* ARBroadcaster+ARSCNViewDelegate.swift in Sources */,
 				034006E823CE7B54000A1E82 /* ViewController.swift in Sources */,
-				0340071E23CEC182000A1E82 /* ARBroadcaster+AgoraRtcEngineDelegate.swift in Sources */,
 				03A19BF223D8E1460069F79A /* UIFont+extension.swift in Sources */,
 				03A19BE623D8B4F80069F79A /* HotdogNotHotdog.mlmodel in Sources */,
 				0340084023D1FD50000A1E82 /* arCoremlBroadcaster.swift in Sources */,
-				0340071623CEBA10000A1E82 /* AgoraLobbyVC.swift in Sources */,
-				0340072423CF8AA5000A1E82 /* ARBroadcaster+ARSessionDelegate.swift in Sources */,
-				0340071C23CEC130000A1E82 /* ARBroadcaster.swift in Sources */,
-				0340071A23CEC0CE000A1E82 /* ARAudience+AgoraRtcEngineDelegate.swift in Sources */,
 				0340084423D23239000A1E82 /* arWatsonBroadcaster.swift in Sources */,
-				0340072A23CF9786000A1E82 /* ARBroadcaster+RenderARDelegate.swift in Sources */,
-				0340071823CEBE25000A1E82 /* ARAudience.swift in Sources */,
 				034006E423CE7B54000A1E82 /* AppDelegate.swift in Sources */,
 				03A19BEA23D8D8350069F79A /* arHotDogBroadcaster.swift in Sources */,
-				0340072823CF8C48000A1E82 /* ARVideoSource.swift in Sources */,
 				0340084223D2282F000A1E82 /* Inceptionv3.mlmodel in Sources */,
 				03A19BE823D8D6B90069F79A /* Hotdog.mlmodel in Sources */,
-				0340071423CE7D3A000A1E82 /* AgoraLobbyVC+UITextFieldDelegate.swift in Sources */,
-				0340072623CF8BEA000A1E82 /* SCNVector3+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

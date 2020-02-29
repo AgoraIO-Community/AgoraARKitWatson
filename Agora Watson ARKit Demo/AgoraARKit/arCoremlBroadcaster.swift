@@ -8,7 +8,7 @@
 
 import Vision
 import UIKit
-
+import AgoraARKit
 
 class arCoremlBroadcaster: ARBroadcaster {
     

@@ -9,6 +9,7 @@
 import Foundation
 import VisualRecognition
 import IBMSwiftSDKCore
+import AgoraARKit
 
 class arWatsonBroadcaster: ARBroadcaster {
     

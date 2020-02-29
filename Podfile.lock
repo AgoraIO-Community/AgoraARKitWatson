@@ -1,37 +1,32 @@
 PODS:
-  - AgoraRtcEngine_iOS (2.9.1)
+  - AgoraARKit (1.0.5):
+    - AgoraRtcEngine_iOS
+    - ARVideoKit (~> 1.51)
+  - AgoraRtcEngine_iOS (2.9.3)
   - ARVideoKit (1.51)
   - IBMSwiftSDKCore (1.0.0)
-  - IBMWatsonVisualRecognitionV3 (3.1.0):
+  - IBMWatsonVisualRecognitionV3 (3.2.0):
     - IBMSwiftSDKCore (~> 1.0.0)
 
 DEPENDENCIES:
-  - AgoraRtcEngine_iOS
-  - ARVideoKit (from `https://github.com/AFathi/ARVideoKit`, branch `swift_4_2`)
+  - AgoraARKit
   - IBMWatsonVisualRecognitionV3
 
 SPEC REPOS:
   trunk:
+    - AgoraARKit
     - AgoraRtcEngine_iOS
+    - ARVideoKit
     - IBMSwiftSDKCore
     - IBMWatsonVisualRecognitionV3
 
-EXTERNAL SOURCES:
-  ARVideoKit:
-    :branch: swift_4_2
-    :git: https://github.com/AFathi/ARVideoKit
-
-CHECKOUT OPTIONS:
-  ARVideoKit:
-    :commit: 350a67d63e4fe523a5f5c5ec842f32d6b96d23dc
-    :git: https://github.com/AFathi/ARVideoKit
-
 SPEC CHECKSUMS:
-  AgoraRtcEngine_iOS: b2eedd8f9ab47b71163f3285e836bd23feb43fff
+  AgoraARKit: 1ea9f96313f99d8e67fcb59843c518462839cfc1
+  AgoraRtcEngine_iOS: 518353e23f05ad47d1348ee8ba154d7ea8b81c8b
   ARVideoKit: d575d98274aab060748514aa32ac964c24c1923f
   IBMSwiftSDKCore: 54ad77b03a4d27b218ba514580197db3b89a96ca
-  IBMWatsonVisualRecognitionV3: c29739d3f02a98a0441f0605872f990790fcbf68
+  IBMWatsonVisualRecognitionV3: beb2ad163d19caf63ac669aef9181ddb069fdbe7
 
-PODFILE CHECKSUM: 53677d1d5d07955e2c8fe20dabe1964a14f34ba7
+PODFILE CHECKSUM: 203cb4543eeece1e7226c999d8f625cdb5f64f8a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0
