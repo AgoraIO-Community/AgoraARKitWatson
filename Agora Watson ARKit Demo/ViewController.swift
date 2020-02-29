@@ -34,8 +34,6 @@ class ViewController: AgoraLobbyVC  {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // set images for UI elements within audience and broadcast view controllers
     }
     
     override func viewWillDisappear(_ animated: Bool) {
